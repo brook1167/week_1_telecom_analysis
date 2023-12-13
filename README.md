@@ -5,3 +5,12 @@ This project centers on a thorough analysis of a telecommunication dataset to ev
 The dataset encompasses crucial information about customer demographics and network activities. Through exploratory data analysis (EDA), we will clean and explore the data, deriving key insights and trends. 
 
 The deliverables include an interactive web-based dashboard for visual exploration and a comprehensive written report outlining findings and strategic recommendations. Stakeholders can leverage these insights to make informed decisions regarding TellCo's potential for growth or divestment. 
+
+
+
+
+Install
+ 
+git clone     https://github.com/brook1167/week_1_telecom_analysis 
+cd notebook 
+pip install -r requirements.txt
