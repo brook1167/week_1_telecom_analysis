@@ -1,5 +1,7 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 
 def get_df_percent_missing(df: pd.DataFrame) -> str:
@@ -30,3 +32,18 @@ def get_missing_colum_percentage(df: pd.DataFrame) -> pd.DataFrame:
 
     # Filter columns with missing values
     return stats[stats['num_missing'] != 0]
+
+
+def plot_scatter(df: pd.DataFrame, x_col: str, y_col: str,title:str) -> None:
+    plt.figure(figsize=(12, 7))
+    sns.scatterplot(data = df, x=x_col, y=y_col)
+    plt.title(f'{title}')
+    plt.xticks(fontsize=14)
+    plt.yticks( fontsize=14)
+    plt.show()
+
+def plot_heatmap(df:pd.DataFrame, title:str, cbar=False)->None:
+    plt.figure(figsize=(12, 7))
+    sns.heatmap(df, annot=True, cmap='viridis', vmin=0, vmax=1, fmt='.2f', linewidths=.7, cbar=cbar )
+    plt.title(title, size=18, fontweight='bold')
+    plt.show()
