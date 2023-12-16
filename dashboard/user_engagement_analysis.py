@@ -19,12 +19,6 @@ def app():
     df_session = pd.read_csv('data/top10_user_session.csv')
     df_DLUL = pd.read_csv('data/top10_DLUL_users.csv')
 
-    st.header("Top 3 best Handset Manufacturers")
-    st.image('data/3_best_handset_manufacturers.png')
-
-    st.header("Top 5 best Handsets used for communication")
-    st.image('data/5 best phones used in communication.png')
-    
     st.header("Data transfers and overall data usage correlation.")
     st.image('data/corellation.png')
     st.markdown(
