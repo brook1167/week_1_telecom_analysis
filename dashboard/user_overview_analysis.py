@@ -5,7 +5,9 @@ import os
 import sys
 import seaborn as sns
 import numpy as np
-
+import streamlit as st
+import pandas as pd
+import plotly.express as px
 
 def app():
 
@@ -213,23 +215,67 @@ def app():
 
   # scatter plot for TotalData vs Gaming Data usage
 
-    st.header('Total Data Vs Gaming Data')
+    st.header('Total Data Vs Gaming Data Usage')
 
     x_column = df_over_view["Gaming_Total_Data"]=df_over_view["Gaming DL (Bytes)"]+df_over_view["Gaming UL (Bytes)"]
     y_column = df_over_view["Total UL and DL"]=df_over_view["Total UL (Bytes)"]+df_over_view["Total DL (Bytes)"]
 
-# Streamlit app
-  
-# Scatter plot using Streamlit
-    st.scatter_chart(df_over_view[['Gaming_Total_Data', 'Total UL and DL']])
+
+    st.scatter_chart(df_over_view[['Gaming_Total_Data', 'Total UL and DL']].sample(1000))
 
 
-    st.header('Total Data Vs Youtube Data')
+    st.header('Total Data Vs Youtube Total Data')
 
     x_column = df_over_view["Youtube_Total_Data"]=df_over_view["Youtube DL (Bytes)"]+df_over_view["Youtube UL (Bytes)"]
     y_column = df_over_view["Total UL and DL"]=df_over_view["Total UL (Bytes)"]+df_over_view["Total DL (Bytes)"]
 
-# Streamlit app
-  
-# Scatter plot using Streamlit
-    st.scatter_chart(df_over_view[['Youtube_Total_Data', 'Total UL and DL']])
+
+    st.scatter_chart(df_over_view[['Youtube_Total_Data', 'Total UL and DL']].sample(1000))
+
+
+
+
+    st.header('Total Data Vs Email Total Data')
+
+    x_column = df_over_view["Email_Total_Data"]=df_over_view["Email DL (Bytes)"]+df_over_view["Email UL (Bytes)"]
+    y_column = df_over_view["Total UL and DL"]=df_over_view["Total UL (Bytes)"]+df_over_view["Total DL (Bytes)"]
+
+
+    st.scatter_chart(df_over_view[['Email_Total_Data', 'Total UL and DL']].sample(1000))
+
+    st.header('Total Data Vs Social Media Total Data')
+
+    x_column = df_over_view["Social_Media_Total_Data"]=df_over_view["Social Media DL (Bytes)"]+df_over_view["Social Media UL (Bytes)"]
+    y_column = df_over_view["Total UL and DL"]=df_over_view["Total UL (Bytes)"]+df_over_view["Total DL (Bytes)"]
+
+
+    st.scatter_chart(df_over_view[['Social_Media_Total_Data', 'Total UL and DL']].sample(1000))
+
+
+    st.header('Total Data Vs Netflix Data')
+
+    x_column = df_over_view["Netflix_Total_Data"]=df_over_view["Netflix DL (Bytes)"]+df_over_view["Netflix UL (Bytes)"]
+    y_column = df_over_view["Total UL and DL"]=df_over_view["Total UL (Bytes)"]+df_over_view["Total DL (Bytes)"]
+
+
+    st.scatter_chart(df_over_view[['Netflix_Total_Data', 'Total UL and DL']].sample(1000))
+
+
+    st.header('Total Data Vs Other_Total_Data')
+
+    x_column = df_over_view['Other_Total_Data'] = df_over_view["Other DL (Bytes)"] + df_over_view['Other UL (Bytes)']
+    y_column = df_over_view["Total UL and DL"]=df_over_view["Total UL (Bytes)"]+df_over_view["Total DL (Bytes)"]
+
+
+    st.scatter_chart(df_over_view[['Other_Total_Data', 'Total UL and DL']].sample(1000))
+
+
+
+    columns = ['Youtube_Total_Data', 'Google_Total_Data', 'Email_Total_Data','Social_Media_Total_Data', 'Netflix_Total_Data', 'Gaming_Total_Data', 'Other_Total_Data', 'Total UL and DL']
+    corr = df_over_view[columns].corr()
+    
+    st.title("Correlation of Usage of User Data Volume")
+
+# Display correlation matrix as text
+    st.write("Correlation Matrix:")
+    st.write(corr)

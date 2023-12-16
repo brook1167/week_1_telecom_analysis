@@ -2,8 +2,9 @@ import streamlit as st
 import pandas as pd
 import os
 import sys
+import matplotlib.pylab as plt
 sys.path.insert(0,'../scripts/')
-
+df_session = pd.read_csv('data/top10_user_session.csv')
 
 def app():
 
@@ -54,6 +55,7 @@ def app():
     st.bar_chart(df_youtube.Youtube_Total_Data)
 
     st.subheader("Top 10 users based on session count")
+    df_session = df_session.drop(columns=['Unnamed: 0'])
     st.dataframe(df_session)
     st.bar_chart(df_session['Dur. (ms)'])
 
